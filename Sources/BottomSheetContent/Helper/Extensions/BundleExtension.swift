@@ -5,14 +5,14 @@
 //  Copyright © 2022 Lucas Zischka. All rights reserved.
 //
 
-#if !SWIFT_PACKAGE
+//#if !SWIFT_PACKAGE
 import Foundation
 
 private class BundleFinder {}
 
 internal extension Bundle {
     /// Returns the resource bundle associated with the current Swift module.
-    static var module: Bundle = {
+    static var contentModule: Bundle = {
         let candidates = [
             // Bundle should be present here when the package is linked into an App.
             Bundle.main.resourceURL,
@@ -37,4 +37,4 @@ internal extension Bundle {
         return Bundle(for: BundleFinder.self)
     }()
 }
-#endif
+//#endif
