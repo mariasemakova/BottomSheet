@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 internal struct BottomSheetView<HContent: View, MContent: View>: View {
     
@@ -108,5 +109,10 @@ internal struct BottomSheetView<HContent: View, MContent: View>: View {
         .edgesIgnoringSafeArea(
             self.isIPadOrMac ? .top : .bottom
         )
+		.onReceive(Just(self.bottomSheetPosition.isHidden)) { isHidden in
+			if isHidden {
+				self.dynamicMainContentHeight = 0
+			}
+		}
     }
 }
